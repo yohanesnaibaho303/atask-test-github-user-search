@@ -1,8 +1,8 @@
-import React from 'react'
+import AppContentContainer from './pages/Home/HomeContainer'
 
 const App = () => {
   return (
-    <div className='bg-amber-600'>App</div>
+    <AppContentContainer />
   )
 }
 
