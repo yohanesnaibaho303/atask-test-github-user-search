@@ -20,6 +20,7 @@ const AppContentContainer = () => {
   const [totalCount, setTotalCount] = useState(0);
 
   const perPage = 10;
+  const dates = new Date().getFullYear();
 
   //#endregion
 
@@ -72,7 +73,7 @@ const AppContentContainer = () => {
         <div className="flex flex-col items-center mb-10">
           <div className="flex items-center gap-2 mb-6">
             <Github className="h-8 w-8 text-blue-500" />
-            <h1 className="text-3xl font-bold">GitHub User Search</h1>
+            <h1 className="text-3xl font-bold">GitHub Repositories Explorer</h1>
           </div>
 
           <SearchBar onSearch={handleSearch} isLoading={loading} />
@@ -116,6 +117,10 @@ const AppContentContainer = () => {
               <p className="text-gray-500 dark:text-gray-500 text-sm">
                 Try searching for "cat", "puppy", or your favorite developer
               </p>
+              <div className="text-gray-500 dark:text-gray-500 text-sm mt-10">
+                &copy;Yohanes Naibaho {dates} <br />
+                aTask - ReactJs Test
+              </div>
             </div>
           )}
         </div>
