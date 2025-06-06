@@ -1,54 +1,71 @@
-# React + TypeScript + Vite
+## 🚀 Project Setup & Installation
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is built with React (TypeScript) using Vite, Bun (or npm), TailwindCSS, and Axios. Deployed on Vercel.
 
-Currently, two official plugins are available:
+### Prerequisites
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Node.js](https://nodejs.org/) **OR** [Bun](https://bun.sh/) installed
+- [Git](https://git-scm.com/) installed
+- (Optional) A [GitHub API token](https://github.com/settings/tokens) for authenticated requests
 
-## Expanding the ESLint configuration
+### 1. Clone the Repository
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```sh
+git clone https://github.com/yohanesnaibaho303/atask-test-github-user-search.git
+cd atask-test-github-user-search
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 2. Install Dependencies
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Choose one of the following:
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+#### Using Bun (recommended for speed)
+```sh
+bun install
 ```
+
+#### Using npm
+```sh
+npm install
+```
+
+### 3. Environment Variables
+
+Create a `.env` file in the root directory:
+
+```sh
+cp .env.example .env
+```
+
+Set your GitHub token (optional but recommended to increase API rate limits):
+
+```
+VITE_GITHUB_TOKEN=your_github_token_here
+```
+If you don't set a token, the app will still work but may hit GitHub's unauthenticated rate limits.
+
+### 4. Run the Development Server
+
+#### Using Bun
+```sh
+bun run dev
+```
+
+#### Using npm
+```sh
+npm run dev
+```
+
+Visit [http://localhost:5173](http://localhost:5173) to view the app.
+
+### 5. Build for Production
+
+```sh
+bun run build   # or npm run build
+```
+
+### 6. Deploy
+
+This project is ready for deployment on [Vercel](https://vercel.com/). You can import it directly from your GitHub repository, set the same environment variables in the Vercel dashboard, and deploy.
+
+---
