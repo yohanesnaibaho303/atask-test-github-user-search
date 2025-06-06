@@ -16,6 +16,7 @@ const UserDropdown: React.FC<UserDropdownProps> = ({ user }) => {
 
   const handleToggle = async () => {
     if (!isOpen && repos.length === 0) {
+      setIsOpen(true);
       setLoading(true);
       setError(null);
       try {
@@ -38,23 +39,46 @@ const UserDropdown: React.FC<UserDropdownProps> = ({ user }) => {
     <div className="border border-gray-200 dark:border-gray-700 rounded-lg mb-4 overflow-hidden">
       <button
         onClick={handleToggle}
-        className="w-full px-6 py-4 flex items-center justify-between bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+        className="w-full px-6 py-4 flex items-center justify-between bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors cursor-pointer"
       >
-        <div className="flex items-center gap-4">
+        <div className="flex items-start gap-4 text-left w-full">
           <img
             src={user.avatar_url}
             alt={`${user.login}'s avatar`}
             className="w-12 h-12 rounded-full"
           />
-          <div className="text-left">
-            <h3 className="font-semibold text-gray-900 dark:text-white">
-              {user.name || user.login}
-            </h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400">
-              @{user.login}
-            </p>
+          <div className="flex-1">
+            <div className="flex justify-between items-start">
+              <div>
+                <h3 className="font-semibold text-gray-900 dark:text-white">
+                  {user.name || user.login}
+                </h3>
+                <p className="text-sm text-gray-500 dark:text-gray-400">
+                  @{user.login}
+                </p>
+              </div>
+            </div>
+
+            {user.bio && (
+              <p className="text-sm mt-1 text-gray-700 dark:text-gray-300">
+                {user.bio}
+              </p>
+            )}
+
+            <div className="mt-2 text-sm text-gray-600 dark:text-gray-400 flex flex-wrap gap-x-4 gap-y-1">
+              <span>
+                👥 <strong>{user.followers}</strong> followers
+              </span>
+              <span>
+                👤 <strong>{user.following}</strong> following
+              </span>
+              <span>
+                📦 <strong>{user.public_repos}</strong> repos
+              </span>
+            </div>
           </div>
         </div>
+
         {isOpen ? (
           <ChevronUp className="w-5 h-5 text-gray-500" />
         ) : (
