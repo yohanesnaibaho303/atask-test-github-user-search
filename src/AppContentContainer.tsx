@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { searchUsers } from "./api/method";
-import type { GitHubUser } from "./dto/githubResponse";
+import type { GitHubUser, SearchUsersResponse } from "./dto/githubResponse";
 import type { SearchUsersRequest } from "./dto/githubResquest";
 
 import { Github } from "lucide-react";
@@ -36,7 +36,7 @@ const AppContentContainer = () => {
     };
 
     try {
-      const res = await searchUsers(request);
+      const res: SearchUsersResponse = await searchUsers(request);
       setUsers(res.items);
       setTotalCount(res.total_count);
     } catch (err) {
@@ -56,6 +56,7 @@ const AppContentContainer = () => {
   const handleSearch = (text: string) => {
     setQuery(text);
     setCurrentPage(1);
+    console.log("🚀 ~ handleSearch ~ text:", text);
   };
 
   const handlePageChange = (page: number) => {
@@ -74,11 +75,6 @@ const AppContentContainer = () => {
           <div className="flex items-center gap-2 mb-6">
             <Github className="h-8 w-8 text-blue-500" />
             <h1 className="text-3xl font-bold">GitHub Repositories Explorer</h1>
-            <h1 className="text-3xl font-bold">
-              todo : fix pointer cursor on click usercard
-            </h1>
-            <h1 className="text-3xl font-bold">todo : deploy on vercel</h1>
-            <h1 className="text-3xl font-bold">todo : add clean docs readme</h1>
           </div>
 
           <SearchBar onSearch={handleSearch} isLoading={loading} />

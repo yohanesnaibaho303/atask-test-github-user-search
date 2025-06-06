@@ -8,8 +8,6 @@ type SearchBarProps = {
 
 const SearchBar: React.FC<SearchBarProps> = ({ onSearch, isLoading }) => {
   const [query, setQuery] = useState<string>("");
-  console.log("query:", query);
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);
   };
