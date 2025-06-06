@@ -1,4 +1,4 @@
-import AppContentContainer from './pages/Home/HomeContainer'
+import AppContentContainer from './AppContentContainer'
 
 const App = () => {
   return (
