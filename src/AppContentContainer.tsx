@@ -74,6 +74,11 @@ const AppContentContainer = () => {
           <div className="flex items-center gap-2 mb-6">
             <Github className="h-8 w-8 text-blue-500" />
             <h1 className="text-3xl font-bold">GitHub Repositories Explorer</h1>
+            <h1 className="text-3xl font-bold">
+              todo : fix pointer cursor on click usercard
+            </h1>
+            <h1 className="text-3xl font-bold">todo : deploy on vercel</h1>
+            <h1 className="text-3xl font-bold">todo : add clean docs readme</h1>
           </div>
 
           <SearchBar onSearch={handleSearch} isLoading={loading} />
