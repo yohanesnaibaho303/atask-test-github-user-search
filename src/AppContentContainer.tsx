@@ -1,15 +1,17 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { searchUsers } from "./api/method";
 import type { GitHubUser } from "./dto/githubResponse";
-import SearchBar from "./components/SearchBar";
-import UserDropdown from "./components/UserDropdown";
-import LoadingSpinner from "./components/LoadingSpinner";
-import ErrorMessage from "./components/ErrorMessage";
-import Pagination from "./components/Pagination";
-import { Github } from "lucide-react";
 import type { SearchUsersRequest } from "./dto/githubResquest";
 
+import { Github } from "lucide-react";
+import SearchBar from "./components/SearchBar";
+import UserDropdown from "./components/UserDropdown";
+import ErrorMessage from "./components/ErrorMessage";
+import LoadingSpinner from "./components/LoadingSpinner";
+import Pagination from "./components/Pagination";
+
 const AppContentContainer = () => {
+  //#region States
   const [query, setQuery] = useState<string>("");
   const [users, setUsers] = useState<GitHubUser[]>([]);
   const [loading, setLoading] = useState(false);
@@ -19,11 +21,10 @@ const AppContentContainer = () => {
 
   const perPage = 10;
 
-  useEffect(() => {
-    if (query) fetchUsers();
-  }, [query, currentPage]);
+  //#endregion
 
-  const fetchUsers = async () => {
+  //#region Handler, side effects
+  const fetchUsers = useCallback(async () => {
     setLoading(true);
     setError(null);
 
@@ -45,7 +46,11 @@ const AppContentContainer = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [query, currentPage, perPage]);
+
+  useEffect(() => {
+    if (query) fetchUsers();
+  }, [query, currentPage, fetchUsers]);
 
   const handleSearch = (text: string) => {
     setQuery(text);
@@ -58,6 +63,8 @@ const AppContentContainer = () => {
   };
 
   const totalPages = Math.min(Math.ceil(totalCount / perPage), 100);
+
+  //#endregion
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">

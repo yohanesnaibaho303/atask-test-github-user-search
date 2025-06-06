@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ChevronDown, ChevronUp, Star, GitFork } from "lucide-react";
+import { ChevronDown, ChevronUp, Star } from "lucide-react";
 import type { GitHubUser, GitHubRepo } from "../dto/githubResponse";
 import { getUserRepos } from "../api/method";
 import LoadingSpinner from "./LoadingSpinner";
