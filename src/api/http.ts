@@ -1,9 +1,13 @@
 import axios, { AxiosError } from "axios";
 
+const token = import.meta.env.VITE_GITHUB_TOKEN;
+console.log("🚀 ~ token:", token);
+
 export const http = axios.create({
   baseURL: "https://api.github.com",
   headers: {
     Accept: "application/vnd.github.v3+json",
+    Authorization: token ? `Bearer ${token}` : undefined,
   },
 });
 
