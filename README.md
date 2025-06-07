@@ -64,7 +64,18 @@ Visit [http://localhost:5173](http://localhost:5173) to view the app.
 bun run build   # or npm run build
 ```
 
-### 6. Deploy
+### 6. Run Tests & View Coverage
+
+To run the tests and generate coverage report, use:
+
+```sh
+bun run test
+```
+
+- This will run all tests and generate a `coverage` folder in the project root.
+- Coverage details will also be displayed in your terminal after the run completes.
+
+### 7. Deploy
 
 This project is ready for deployment on [Vercel](https://vercel.com/). You can import it directly from your GitHub repository, set the same environment variables in the Vercel dashboard, and deploy.
 
