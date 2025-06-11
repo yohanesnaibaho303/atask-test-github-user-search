@@ -1,5 +1,7 @@
 ## 🚀 Project Setup & Installation
 
+test pr
+
 This project is built with React (TypeScript) using Vite, Bun (or npm), TailwindCSS, and Axios. Deployed on Vercel.
 
 ### Prerequisites
